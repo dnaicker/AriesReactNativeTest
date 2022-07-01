@@ -1,8 +1,8 @@
-## Intro
+### Intro
 A React Native Aries JS application that starts an SSI Agent and is able to store credentials
 
-## Todp
+### Todo
 1. Store credentials
 
-## Run
+### Run
 1. 'npm run android'
