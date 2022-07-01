@@ -33,21 +33,7 @@ import {
   WsOutboundTransport,
   HttpOutboundTransport,
 } from '@aries-framework/core';
-
-const config: InitConfig = {
-  label: 'docs-rn-agent',
-  walletConfig: {
-    id: 'wallet-id',
-    key: 'testkey0000000000000000000000000',
-  },
-};
-
-const agent = new Agent(config, agentDependencies);
-
-agent.registerOutboundTransport(new WsOutboundTransport());
-agent.registerOutboundTransport(new HttpOutboundTransport());
-
-const initialize = async () => await agent.initialize().catch(console.error)
+import {ConsoleLogger, LogLevel} from '@aries-framework/core';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -81,6 +67,22 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const config: InitConfig = {
+    label: 'docs-rn-agent',
+    walletConfig: {
+      id: 'wallet-id',
+      key: 'testkey0000000000000000000000000',
+    },
+    logger: new ConsoleLogger(LogLevel.info),
+  };
+
+  const agent = new Agent(config, agentDependencies);
+
+  agent.registerOutboundTransport(new WsOutboundTransport());
+  agent.registerOutboundTransport(new HttpOutboundTransport());
+
+  const initialize = async () => await agent.initialize().catch(console.error);
 
   return (
     <SafeAreaView style={backgroundStyle}>
