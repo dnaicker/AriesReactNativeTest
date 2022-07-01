@@ -69,10 +69,10 @@ const App: () => Node = () => {
   };
 
   const config: InitConfig = {
-    label: 'docs-rn-agent',
+    label: 'demo-agent-bob',
     walletConfig: {
-      id: 'wallet-id',
-      key: 'testkey0000000000000000000000000',
+      id: 'mainBob',
+      key: 'demoagentbob00000000000000000000',
     },
     logger: new ConsoleLogger(LogLevel.info),
   };
